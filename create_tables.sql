@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS nillu_parlour;
+USE nillu_parlour;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(50) DEFAULT 'admin',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  sku VARCHAR(100),
+  stock INT DEFAULT 0,
+  cost_price DECIMAL(12,2) DEFAULT 0.00,
+  sell_price DECIMAL(12,2) DEFAULT 0.00,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS services (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  description TEXT,
+  price DECIMAL(12,2) NOT NULL,
+  cost DECIMAL(12,2) DEFAULT 0.00,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS transactions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  type ENUM('product_sale','service_sale','expense') NOT NULL,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  details JSON,
+  amount DECIMAL(12,2) NOT NULL,
+  cost DECIMAL(12,2) DEFAULT 0.00,
+  notes TEXT
+);
+
+-- Create default admin (you can change password later)

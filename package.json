@@ -1,0 +1,25 @@
+{
+  "name": "nillu-backend",
+  "version": "1.0.0",
+  "description": "1. Install dependencies: `npm install` 2. Create MySQL database and run the SQL in `init_db.sql` or use the provided `create_tables.sql` 3. Copy `.env.example` to `.env` and fill in values. 4. Start: `npm start` (or `npm run dev` with nodemon)",
+  "license": "ISC",
+  "author": "Madhav",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
